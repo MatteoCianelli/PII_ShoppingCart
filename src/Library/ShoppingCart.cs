@@ -25,12 +25,20 @@ namespace Ucu.Poo.eCommerce
         }
 
         private List<CartItem> items = new List<CartItem>();
-
         public IReadOnlyList<CartItem> Items
         {
             get
             {
                 return this.items.AsReadOnly();
+            }
+        }
+        
+        private List<IDiscount> discounts = new List<IDiscount>();
+        public IReadOnlyList<IDiscount> Discounts
+        {
+            get
+            {
+                return this.discounts.AsReadOnly();
             }
         }
 
@@ -85,6 +93,11 @@ namespace Ucu.Poo.eCommerce
             }
 
             return result;
+        }
+
+        public void AddDiscount(IDiscount discount)
+        {
+            discounts.Add(discount);
         }
     }
 }
